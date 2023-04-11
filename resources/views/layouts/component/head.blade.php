@@ -12,7 +12,7 @@
 
 <meta itemprop="name" content="منصة وصف - المتجر">
 <meta itemprop="description" content="">
-<meta name="image" itemprop="image" content="https://www.ektml.com/catalog/image/1">
+<meta name="image" itemprop="image" content="">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="@yield('og-title')">
@@ -48,3 +48,6 @@
 @endif
 
    {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"> --}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
