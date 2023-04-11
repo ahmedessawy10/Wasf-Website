@@ -84,7 +84,8 @@ product
                             </div>
                  </a>
                @foreach ( $products as $product )
-               <div class="card">
+               <div class="card" >
+                <a href="{{route('freelanc.product.show' ,$product->id)}}">
                 <div class="image-product">
                    <img src="{{ asset('assets/images/product/'.$product->img1) }}" class="card-img-top" alt="product image">
 
@@ -104,6 +105,8 @@ product
                             </div>
                           
                           </div>
+
+                        </a>
                </div>
                @endforeach
                

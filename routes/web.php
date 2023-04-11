@@ -32,9 +32,9 @@ Route::get('/', [HomeController::class, 'index'])->name("home");
 
 // test
 
-route::get('frelancpro',function(){
-return view('user.freelancerprofile');
-});
+// route::get('freelancer/profile',function(){
+// return view('user.freelancerprofile');
+// });
 route::get('/pay',[PaymentController::class,'visa']);
 
 Route::post('/notifications/create', [NotificationController::class, 'create'])->name('create.noti');

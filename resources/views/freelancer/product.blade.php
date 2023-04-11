@@ -38,9 +38,24 @@ product
                 <div class="title">
                     
                     <div class="info d-flex flex-column  ">
-                        <h2 class="bold text-black">product name </h2>
+                        <h2 class="bold text-black">{{$product->name}} </h2>
                        
-                        <p class="text-black-50">categroyname , supcategory name</p>
+                        <p class="text-black-50">
+                            @if(app()->getLocale()=='ar')
+                          {{   App\Models\Category::findorfail($product->cat_id)->title_ar}}
+                          @else
+                          {{   App\Models\Category::findorfail($product->cat_id)->title_en }}
+                          @endif 
+                            , 
+
+                            @if(app()->getLocale()=='ar')
+                            {{   App\Models\Service::findorfail($product->service_id)->service_ar }}
+
+                            @else
+
+                            {{   App\Models\Service::findorfail($product->service_id)->service_en }}
+                            @endif
+                        </p>
                                 
                               
                     </div>
@@ -49,7 +64,7 @@ product
              <div class="service d-flex justify-content-end  flex-1">
                 <div class="serv d-flex align-items-center">
 
-                    <a href="{{route("freelanc.editproduct")}}" style="
+                    <a href="{{route("freelanc.product.edit",$product->id)}}" style="
                     display: flex;
                     flex-grow: 1;
                     align-items: center;
@@ -65,7 +80,7 @@ product
 
                     <div  class="prod-likes withborder py-2 px-3 rounded-pill">
                                   <i class="fa-solid fa-heart align-self-center"></i>
-                                  <span>123</span>
+                                  <span>{{$product->likes->count()}}</span>
                     </div>
 
                             
@@ -127,18 +142,21 @@ product
       </div>
     </div>
                 <div class="description  col-lg-6 col-md-6 col-sm-12  d-flex flex-column ">
-                    <div class="price">53<span class="curancy">
+                    <div class="price">{{$product->price}}<span class="curancy">
                         S.R
                     </span>
 
                     </div>
                     <div class="body">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam culpa reprehenderit veniam sequi, exercitationem ipsum voluptates sed, soluta et voluptate perspiciatis distinctio quaerat aut. Rem autem aut illum eveniet voluptatibus.
+                       {{$product->description}}
                     </div>
                     <div class="proprity py-4" >
                         <h2 >proprities</h2>
+                        @foreach ( $product->proprity()->get() as $proprity )
+                            
+                        @endforeach
                         <ul >
-                            <li>File type: PDF, PSD</li>
+                            <li>{{$proprity->key}}: PDF, PSD</li>
                             <li>Programs used: illustrator, InDesign </li>
                             <li>File size: A4</li>
                             
