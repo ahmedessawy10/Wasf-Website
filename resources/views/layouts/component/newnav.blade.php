@@ -17,19 +17,23 @@
         
         <div class="nav-x">
         
-            <a href="{{ route('home') }}" class=" d-inline-block align-self-center ms-2 px-2{{ Request::is('home*') ? 'active' : '' }}">Home</a>
-            <a href="{{ route('products') }}"class=" d-inline-block align-self-center  ms-2 px-2">products</a>
-            <a href="{{ route('freelancers') }}"class=" d-inline-block align-self-center  ms-2 px-2{{ request()->is('freelancers') ? 'active' : '' }}">freelancers</a>
+            <div class="d-flex justify-content-end">
 
-            @if (!auth()->check())
-                <a class="d-inline-block align-self-center" href="#" class="btn" data-bs-toggle="modal"
-                data-bs-target="#login">login</a>
-            @else
-                <a class=" d-flex align-self-center" href="{{route("user.cart.index")}}" >
-                    <i class="fa-solid fa-cart-shopping cart-icon px-3"></i>
-                    <span id="cart-count">{{App\Models\Cart::where('user_id' ,auth()->user()->id)->count()}}</span>
-                </a>
-            @endif
+                <a href="{{ route('home') }}" class=" d-inline-block align-self-center ms-2 px-2{{ Request::is('home*') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('products') }}"class=" d-inline-block align-self-center  ms-2 px-2">products</a>
+                <a href="{{ route('freelancers') }}"class=" d-inline-block align-self-center  ms-2 px-2{{ request()->is('freelancers') ? 'active' : '' }}">freelancers</a>
+    
+                @if (!auth()->check())
+                    <a class="d-inline-block align-self-center" href="#" class="btn" data-bs-toggle="modal"
+                    data-bs-target="#login">login</a>
+                @else
+                    <a class=" d-flex align-self-center" href="{{route("user.cart.index")}}" >
+                        <i class="fa-solid fa-cart-shopping cart-icon px-3"></i>
+                        <span id="cart-count">{{App\Models\Cart::where('user_id' ,auth()->user()->id)->count()}}</span>
+                    </a>
+                @endif
+            </div>
+          
 
             @if (auth()->check())
             @if (auth()->user()->type=="customer")
